@@ -64,7 +64,7 @@ export const Presentational=(
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={8} sm={10} xs={12}>
-                    {SelectBinded("profile_id", "Rol",[{id:1,name:"Administrador"},{id:2,name:"Bibliotecario"},{id:3,name:"Lector"}] , dataUser.profile_id, onChangeInput, loading)}
+                    {SelectBinded("profile_id", "Rol",[{id:1,name:"Administrador"},{id:2,name:"Bibliotecario"},{id:3,name:"Lector"}] , dataUser.profile_id, onChangeInput, (userDetails.profile_id===3?true:loading))}
                 </Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>

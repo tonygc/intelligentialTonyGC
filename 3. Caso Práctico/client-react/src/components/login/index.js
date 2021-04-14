@@ -1,5 +1,5 @@
 import { Presentational as FormLogin } from './presentational';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthDispatch, useAuthState, LoginUser } from '../context'
 export function Container(props) {
     const [email, setEmail] = useState('')
@@ -8,6 +8,23 @@ export function Container(props) {
     const dispatch = useAuthDispatch()
     const { loading, errorMessage, userDetails } = useAuthState() //read the values of loading and errorMessage from context
  
+    useEffect(()=>{
+          if(userDetails){
+            switch(userDetails.profile_id){
+                case 1: //Administrador
+                    props.history.push('/usuario/lista')
+                    break;
+                case 2://Bibliotecario
+                    props.history.push('/solicitudesBibliotecario')
+                    break;
+                case 3://Lector
+                    props.history.push('/solicitudesLector')
+                    break;
+                default:
+                    break;
+            }
+          }
+    },[]);
     const handleLogin = async (e) => {
         e.preventDefault()
  

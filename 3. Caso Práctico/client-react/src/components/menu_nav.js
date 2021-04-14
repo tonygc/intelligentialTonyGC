@@ -147,6 +147,19 @@ export default function Menu(props){
           <ListItemText primary="Mis Solicitudes" />
         </StyledMenuItem>
                     }
+                    {
+                        (user.userDetails.profile_id===3
+                            ) &&
+                            <StyledMenuItem
+                            component={Link}
+                        to="/usuario"
+                            >
+          <ListItemIcon>
+            <FaceIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Perfil de usuario" />
+        </StyledMenuItem>
+                    }
         <StyledMenuItem onClick={handleLogout}>
           <ListItemIcon>
             <ExitToAppIcon fontSize="small" />
@@ -175,7 +188,11 @@ export default function Menu(props){
                     : 
                     (user.userDetails.profile_id === 1 ?
                     <FormUser {...props} /> :
-                    <FormUser {...props } location={{...props, state:user.userDetails}} />)
+                    user.userDetails.profile_id === 3 ?
+                    <FormUser {...props } location={{...props, state:user.userDetails}} />
+                    :
+                    <Redirect to="/usuario/login" /> 
+                    )
                 } />
                 <Route path="/usuario/lista" exact render={
                     props=> !user.userDetails ? <Redirect to="/usuario/login" /> 

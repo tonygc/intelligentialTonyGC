@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Select,TableRow, TableCell, Button, Grid, Box, InputLabel, TextField, Backdrop, CircularProgress, FormControl, MenuItem } from '@material-ui/core'
+import { Dialog, DialogTitle, DialogContent, DialogActions, Select,TableRow, TableCell, Button, Grid, Box, InputLabel, TextField, Backdrop, CircularProgress, FormControl, MenuItem } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import CancelIcon from '@material-ui/icons/Cancel';
 import ErrorIcon from '@material-ui/icons/Error';
@@ -160,6 +160,8 @@ export function ElementsPaginateTable(){
 }
 
 export const SelectBinded=(id, title, values, value, handleChange, disabled)=>{
+    console.log("disabled", disabled);
+    console.log("value", value);
     const classes=useStyles();
     return (
         <FormControl fullWidth variant="outlined" className={classes.formControl}>
@@ -173,9 +175,46 @@ export const SelectBinded=(id, title, values, value, handleChange, disabled)=>{
           label={title}
         >
             {values.map((item)=>(
-                <MenuItem value={item.id}>{item.name}</MenuItem>
+                <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
             ))}
         </Select>
       </FormControl>
     )
 }
+
+export function ConfirmationDialog(props) {
+    const { title, message, onClose, open, ...other } = props;
+   
+    const handleCancel = () => {
+      onClose(false);
+    };
+  
+    const handleOk = () => {
+      onClose(true);
+    };
+  
+    return (
+      <Dialog
+        disableBackdropClick
+        disableEscapeKeyDown
+        maxWidth="xs"
+        aria-labelledby="confirmation-dialog-title"
+        open={open}
+        {...other}
+      >
+        <DialogTitle id="confirmation-dialog-title">{title}</DialogTitle>
+        <DialogContent dividers>
+          {message}
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleCancel} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleOk} color="primary">
+            Ok
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+  

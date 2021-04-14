@@ -3,6 +3,7 @@ import {Presentational as PresentationalHistoryBooks} from './presentational';
 import { useFetch } from '../customHooks/requestAPI';
 import { useAuthState } from '../context';
 import { today } from '../utilities';
+import { ConfirmationDialog }  from '../customHooks/customComponents';
 export const Container=()=>{
     const [url, setUrl]=useState("http://localhost:3000/bookRequest/getAll");
     const [requestOptions, setRequestOptions]=useState(
@@ -15,8 +16,21 @@ export const Container=()=>{
             body:null
         }
     );
+    const [openConfirm, setOpenConfirm ]=useState(false);
     const [ response, loading, hasError, message] = useFetch(url, setUrl, requestOptions);
     const { userDetails} = useAuthState();
+    // const [itemSelected,setItemSelected]=useState({});
+    
+    // const onCloseConfirmation=(accept)=>{
+    //     if(accept){
+
+    //     }
+    // }
+    // ConfirmationDialog({title:"Atención",message:"¿Está seguro de aprobar la solicitud?",onClose:onCloseConfirmation, open:openConfirm});
+    // const onConfirmApprove=(item)=>{
+    //      setItemSelected(item);
+    //      setOpenConfirm(true);
+    // };
     const onClickApprove=(item)=>{
         item.BORROWDATE = today();
         setRequestOptions({...requestOptions, method:"PUT", body:JSON.stringify(item)});
