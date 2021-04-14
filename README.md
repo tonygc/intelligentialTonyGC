@@ -32,7 +32,7 @@ Descripción de implementación.
 
 	Consta de 2 aplicaciones, un API Rest desarrollada con node, express y sqlite.
 	A continuación describo el proyecto api ubicado en el directorio server-node.
-	El archivo de base de datos se genera autómaticamente, está ubicado en ./database/database.db, y por default contiene la siguiente información.
+	El archivo de base de datos se genera autómaticamente, está ubicado en ./database/index.js, y por default contiene la siguiente información.
 	
 	*Usuarios
 	Email						Password		Perfil

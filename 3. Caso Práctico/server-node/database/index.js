@@ -22,7 +22,13 @@ const db = new sqlite3.Database('./database/database.db', (err) => {
             }
             let insert = 'INSERT INTO users (first_name, last_name, email, password, phone, profile_id, CREATEDATE, UPDATEDATE) VALUES (?,?,?,?,?,?,?,?)';
             let today=datetimeFuncs.getToday();
-            db.run(insert, ["Tony", "González", "tony@gmail.com", "123", "3121063756", 1, 
+            db.run(insert, ["Admin", "Intelligential", "admin@gmail.com", "123", "3121063756", 1, 
+                today,
+                today]);
+            db.run(insert, ["Bibliotecario", "Intelligential", "bibliotecario@gmail.com", "456", "3121063756", 2, 
+                today,
+                today]);
+            db.run(insert, ["Lector", "Intelligential", "lector@gmail.com", "234", "3121063756", 3, 
                 today,
                 today]);
         });
@@ -39,7 +45,13 @@ const db = new sqlite3.Database('./database/database.db', (err) => {
         )', (err) => {
             if (err) {
                 console.log("Table 'books' already exists.");
+                return;
             }
+            let insert = 'INSERT INTO books (title, author, editorial, year, pages, CREATEDATE, UPDATEDATE) VALUES (?,?,?,?,?,?,?)';
+            let today=datetimeFuncs.getToday();
+            db.run(insert, ["Los milagros prohibidos", "Alexis Ravelo", "Siruela", 1990, 350, 
+                today,
+                today]);
         });
 
         db.run('CREATE TABLE books_requests( \

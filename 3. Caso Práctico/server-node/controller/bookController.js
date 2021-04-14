@@ -40,15 +40,15 @@ const addBook = (req, res) => {
             let today=datetimeFuncs.getToday();
 
             if(!title){
-                res.status(400).json({"error":"The book title field is required."});
+                res.status(400).json({success:false,"error":"The book title field is required."});
                 return;
             }
             if(!author){
-                res.status(400).json({"error":"The book author field is required."});
+                res.status(400).json({success:false,"error":"The book author field is required."});
                 return;
             }
             if(!editorial){
-                res.status(400).json({"error":"The book author field is required."});
+                res.status(400).json({success:false,"error":"The book editorial field is required."});
                 return;
             }
 
@@ -87,19 +87,19 @@ const updateBook = (req, res) => {
             let today=datetimeFuncs.getToday();
             
             if(!id){
-                res.status(400).json({"error":"The book id field is required."});
+                res.status(400).json({success:false,"error":"The book id field is required."});
                 return;
             }
             if(!title){
-                res.status(400).json({"error":"The book title field is required."});
+                res.status(400).json({success:false,"error":"The book title field is required."});
                 return;
             }
             if(!author){
-                res.status(400).json({"error":"The book author field is required."});
+                res.status(400).json({success:false,"error":"The book author field is required."});
                 return;
             }
             if(!editorial){
-                res.status(400).json({"error":"The book author field is required."});
+                res.status(400).json({success:false,"error":"The book editorial field is required."});
                 return;
             }
 

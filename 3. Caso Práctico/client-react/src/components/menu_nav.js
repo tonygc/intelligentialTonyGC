@@ -110,6 +110,19 @@ export default function Menu(props){
                       <ListItemText primary="Usuarios" />
                                   </StyledMenuItem>
                         }
+                        {
+                        (user.userDetails.profile_id===3
+                            ) &&
+                            <StyledMenuItem
+                            component={Link}
+                        to="/solicitudesLector"
+                            >
+          <ListItemIcon>
+            <ViewListIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Mis Solicitudes" />
+        </StyledMenuItem>
+                    }
           {(user.userDetails.profile_id===1 || user.userDetails.profile_id===3) &&
           <StyledMenuItem
           component={Link}
@@ -134,19 +147,7 @@ export default function Menu(props){
           <ListItemText primary="Solicitudes de Préstamo" />
         </StyledMenuItem>
                     }
-                    {
-                        (user.userDetails.profile_id===3
-                            ) &&
-                            <StyledMenuItem
-                            component={Link}
-                        to="/solicitudesLector"
-                            >
-          <ListItemIcon>
-            <ViewListIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Mis Solicitudes" />
-        </StyledMenuItem>
-                    }
+                    
                     {
                         (user.userDetails.profile_id===3
                             ) &&

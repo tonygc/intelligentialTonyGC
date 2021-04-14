@@ -46,7 +46,7 @@ return(
                                     <DarkTableCell>{"Libro"}</DarkTableCell>
                                     <DarkTableCell align="right">{"Fecha de Solicitud"}</DarkTableCell>
                                     <DarkTableCell align="right">{"Estatus"}</DarkTableCell>
-                                    <DarkTableCell align="left">{"Fecha de Actualización"}</DarkTableCell>
+                                    <DarkTableCell align="right">{"Fecha de Actualización"}</DarkTableCell>
                                 </DarkTableRow>
                             </TableHead>
                             <TableBody>
@@ -55,9 +55,9 @@ return(
                                 <DarkTableRow key={item.id} style={(item.BORROWDATE && !item.DELIVERYDATE) ? { backgroundColor : "rgb(199 243 199)" } : ((item.DENEGATEDDATE) ? { backgroundColor : "rgb(251 201 197)" } :  (item.DELIVERYDATE)  ? { backgroundColor : "#8bd9fb8f" } : { backgroundColor : "rgb(255 254 169)" })}>
                                     <DarkTableCell>{item.title}</DarkTableCell>
                                     <DarkTableCell align="right">{item.REQUESTDATE}</DarkTableCell>
-                                    <DarkTableCell align="right">{ (!item.BORROWDATE && !item.DENEGATEDDATE) ? "NUEVA SOLICITUD" : (item.BORROWDATE && !item.DELIVERYDATE) ? "AUTORIZADO" : ((item.DENEGATEDDATE) ? "NO AUTORIZADO" : "LIBRO DEVUELTO") }
+                                    <DarkTableCell align="right">{ (!item.BORROWDATE && !item.DENEGATEDDATE) ? "ESPERANDO AUTORIZACION" : (item.BORROWDATE && !item.DELIVERYDATE) ? "AUTORIZADO" : ((item.DENEGATEDDATE) ? "NO AUTORIZADO" : "LIBRO DEVUELTO") }
                                                 </DarkTableCell>
-                                    <DarkTableCell align="left">{(item.BORROWDATE && !item.DELIVERYDATE) ? item.BORROWDATE : ((item.DENEGATEDDATE) ? item.DENEGATEDDATE : item.DELIVERYDATE)}</DarkTableCell>
+                                    <DarkTableCell align="right">{(item.BORROWDATE && !item.DELIVERYDATE) ? item.BORROWDATE : ((item.DENEGATEDDATE) ? item.DENEGATEDDATE : item.DELIVERYDATE)}</DarkTableCell>
                                 </DarkTableRow>
                             )))}
                             </TableBody>
