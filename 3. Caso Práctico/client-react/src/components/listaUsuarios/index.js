@@ -26,16 +26,11 @@ export const Container=()=>{
     }
     return(
         <div>
-        {(loading && 
-            <label>Cargando...</label>
-        )}
-        {(hasError && 
-            <label>Error al procesar la solicitud</label>
-        )}
         {(response &&
             <BrowseUsers 
                 rows={response.data} 
                 loading={loading}
+                hasError={hasError}
                 clickAddUser={clickAddUser} 
                 clickEditUser={clickEditUser} />
         )}

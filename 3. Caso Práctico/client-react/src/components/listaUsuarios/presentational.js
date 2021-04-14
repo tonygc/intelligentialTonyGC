@@ -12,7 +12,7 @@ import { DarkTableCell, DarkTableRow, gridMessageError, BackdropLoading }  from 
 import { ButtonAdd } from '../customHooks/customComponents'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 
-export const Presentational=({rows, setRows, clickAddUser, clickEditUser, loading})=>{
+export const Presentational=({rows, setRows, clickAddUser, clickEditUser, loading, hasError})=>{
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [page, setPage] = useState(0);
 
@@ -34,6 +34,9 @@ export const Presentational=({rows, setRows, clickAddUser, clickEditUser, loadin
                     Mantenimiento de Usuarios
                 </Typography>
             </Grid>
+            {hasError && 
+                gridMessageError("")
+            }
             <Grid item lg={1} md={1} sm={"auto"} xs={"auto"}></Grid>
             <Grid item lg={10} md={10} sm={12} xs={12}>
                 <TableContainer component={Paper}>

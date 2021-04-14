@@ -6,6 +6,7 @@ export function Presentational(props) {
 
     return (
         <div>
+            {BackdropLoading(props.loading)}
             <Grid container spacing={2}>
             <Grid item lg={4} md={3} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={6} sm={10} xs={12}>

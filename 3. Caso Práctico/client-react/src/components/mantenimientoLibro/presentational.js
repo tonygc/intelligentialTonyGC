@@ -1,5 +1,5 @@
 import { TextField, Grid, Box, Typography } from '@material-ui/core'
-import { ButtonSave, ButtonCancel, gridMessageError } from '../customHooks/customComponents'
+import { ButtonSave, ButtonCancel, gridMessageError, BackdropLoading, gridMessageSuccess } from '../customHooks/customComponents'
 
 export const Presentational=(
     {
@@ -14,6 +14,7 @@ export const Presentational=(
     })=>{
 return (
     <div>
+        {BackdropLoading(loading)}
         <Grid container spacing={2}>
             <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
             <Grid item lg={4} md={8} sm={10} xs={12}>
@@ -29,6 +30,12 @@ return (
                 response.success===false) &&
                 gridMessageError(response.error)
             }
+             {(response &&
+                    response.success===true) &&
+                    <Grid item xs={12}>
+                        {gridMessageSuccess("")}
+                    </Grid>
+                }
             <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={8} sm={10} xs={12}>
                     <TextField
