@@ -1,6 +1,22 @@
 const functionality = require('./matrix');
 
 let matrixOne = [
+  [1, 2],
+  [8, 3],
+  [7, 4],
+  [6, 5],
+];
+console.log("<======First sample matrix 2X4======>");
+console.log("\n");
+for(let i=0;i<matrixOne.length;i++){
+  console.log("\t"+matrixOne[i].join("\t"));
+}
+console.log("\n");
+let response = functionality.caracol(matrixOne);
+console.log("<-Response Array->", response);
+console.log("\n");
+
+matrixOne = [
     [1, 2],
     [3, 4],
     [5, 6]
@@ -11,7 +27,7 @@ for(let i=0;i<matrixOne.length;i++){
     console.log("\t"+matrixOne[i].join("\t"));
 }
 console.log("\n");
-let response = functionality.caracol(matrixOne);
+response = functionality.caracol(matrixOne);
 console.log("<-Response Array->", response);
 console.log("\n");
 
