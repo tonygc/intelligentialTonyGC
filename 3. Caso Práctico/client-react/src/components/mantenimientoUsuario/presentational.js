@@ -1,5 +1,5 @@
 import { Grid, Box, Typography } from '@material-ui/core';
-import { ButtonSave, ButtonCancel, gridMessageError, EditTextBinded, BackdropLoading, gridMessageSuccess } from '../customHooks/customComponents';
+import { SelectBinded,ButtonSave, ButtonCancel, gridMessageError, EditTextBinded, BackdropLoading, gridMessageSuccess } from '../customHooks/customComponents';
 
 export const Presentational=(
         {
@@ -54,16 +54,17 @@ export const Presentational=(
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={8} sm={10} xs={12}>
-                    {EditTextBinded("email", "Email", dataUser.email, onChangeInput, loading)}
+                    {EditTextBinded("email", "Email", dataUser.email, onChangeInput, loading,"email")}
                 </Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={8} sm={10} xs={12}>
-                    {EditTextBinded("phone", "Teléfono", dataUser.phone, onChangeInput, loading)}
+                    {EditTextBinded("phone", "Teléfono", dataUser.phone, onChangeInput, loading,"phone")}
                 </Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={8} sm={10} xs={12}>
+                    {SelectBinded("profile_id", "Rol",[{id:1,name:"Administrador"},{id:2,name:"Bibliotecario"},{id:3,name:"Lector"}] , dataUser.profile_id, onChangeInput, loading)}
                 </Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>
                 <Grid item lg={4} md={2} sm={1} xs={"auto"}></Grid>

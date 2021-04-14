@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { TableRow, TableCell, Button, Grid, Box, InputLabel, TextField, Backdrop, CircularProgress } from '@material-ui/core'
+import { Select,TableRow, TableCell, Button, Grid, Box, InputLabel, TextField, Backdrop, CircularProgress, FormControl, MenuItem } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import CancelIcon from '@material-ui/icons/Cancel';
 import ErrorIcon from '@material-ui/icons/Error';
 import DoneIcon from '@material-ui/icons/Done';
 import { green } from '@material-ui/core/colors';
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
 
 export const DarkTableRow = withStyles((theme) => ({
     root: {
@@ -148,4 +157,25 @@ export function ElementsPaginateTable(){
       };
 
     return [ rowsPerPage, page, setRowsPerPage, setPage, handleChangePage, handleChangeRowsPerPage];
+}
+
+export const SelectBinded=(id, title, values, value, handleChange, disabled)=>{
+    const classes=useStyles();
+    return (
+        <FormControl fullWidth variant="outlined" className={classes.formControl}>
+        <InputLabel id={id+"-label"}>{title}</InputLabel>
+        <Select
+          labelId={id+"-label"}
+          id={id}
+          disabled={disabled}
+          value={value}
+          onChange={handleChange}
+          label={title}
+        >
+            {values.map((item)=>(
+                <MenuItem value={item.id}>{item.name}</MenuItem>
+            ))}
+        </Select>
+      </FormControl>
+    )
 }

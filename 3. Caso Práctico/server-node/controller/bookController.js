@@ -38,6 +38,20 @@ const addBook = (req, res) => {
                     year, pages, CREATEDATE, \
                     UPDATEDATE) VALUES (?,?,?,?,?,?,?)';
             let today=datetimeFuncs.getToday();
+
+            if(!title){
+                res.status(400).json({"error":"The book title field is required."});
+                return;
+            }
+            if(!author){
+                res.status(400).json({"error":"The book author field is required."});
+                return;
+            }
+            if(!editorial){
+                res.status(400).json({"error":"The book author field is required."});
+                return;
+            }
+
             db.run(insert, 
                 [title, author, editorial, year, pages, today, today], 
                 function(err) {
@@ -72,6 +86,23 @@ const updateBook = (req, res) => {
                             WHERE id=?';
             let today=datetimeFuncs.getToday();
             
+            if(!id){
+                res.status(400).json({"error":"The book id field is required."});
+                return;
+            }
+            if(!title){
+                res.status(400).json({"error":"The book title field is required."});
+                return;
+            }
+            if(!author){
+                res.status(400).json({"error":"The book author field is required."});
+                return;
+            }
+            if(!editorial){
+                res.status(400).json({"error":"The book author field is required."});
+                return;
+            }
+
             db.run(insert, 
                 [title, author, editorial, year, pages, today, id], 
                 (err)=>{

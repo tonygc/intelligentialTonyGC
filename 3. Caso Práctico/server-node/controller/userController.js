@@ -1,5 +1,6 @@
 const sqlite3 = require('sqlite3')
-const datetimeFuncs= require('../components/datetime')
+const datetimeFuncs= require('../components/datetime');
+const { validateEmail } = require('../components/regularExpressions');
 
 //action to get all records
 const getAllUsers = (req, res) => {
@@ -35,6 +36,39 @@ const addUser = (req, res) => {
                 confirm_password,
                 phone, 
                 profile_id } = req.body;
+
+                if(!first_name){
+                    res.status(400).json({success:false,"error":"The user first_name field is required."});
+                    return;
+                }
+                if(!last_name){
+                    res.status(400).json({success:false,"error":"The user last_name field is required."});
+                    return;
+                }
+                if(!email){
+                    res.status(400).json({success:false,"error":"The user email field is required."});
+                    return;
+                }
+                if(!validateEmail(email)){
+                    res.status(400).json({success:false,"error":"The email must be in valid format."});
+                    return;
+                }
+                if(!phone){
+                    res.status(400).json({success:false,"error":"The user phone field is required."});
+                    return;
+                }
+                if(!profile_id){
+                    res.status(400).json({success:false,"error":"The user profile_id field is required."});
+                    return;
+                }
+                if(!password){
+                    res.status(400).json({success:false,"error":"The user password field is required."});
+                    return;
+                }
+                if(!confirm_password){
+                    res.status(400).json({success:false,"error":"The user confirm_password field is required."});
+                    return;
+                }
 
                 if(password.trim()!==confirm_password.trim()){
                     db.close();
@@ -75,7 +109,44 @@ const updateUser = (req, res) => {
                 phone, 
                 profile_id,
                 id } = req.body;
+            if(!id){
+                res.status(400).json({success:false,"error":"The user id field is required."});
+                return;
+            }
+            if(!first_name){
+                res.status(400).json({success:false,"error":"The user first_name field is required."});
+                return;
+            }
+            if(!last_name){
+                res.status(400).json({success:false,"error":"The user last_name field is required."});
+                return;
+            }
+            if(!email){
+                res.status(400).json({success:false,"error":"The user email field is required."});
+                return;
+            }
+            if(!validateEmail(email)){
+                res.status(400).json({success:false,"error":"The email must be in valid format."});
+                return;
+            }
+            if(!phone){
+                res.status(400).json({success:false,"error":"The user phone field is required."});
+                return;
+            }
+            if(!profile_id){
+                res.status(400).json({success:false,"error":"The user profile_id field is required."});
+                return;
+            }
+            if(!password){
+                res.status(400).json({success:false,"error":"The user password field is required."});
+                return;
+            }
+            if(!confirm_password){
+                res.status(400).json({success:false,"error":"The user confirm_password field is required."});
+                return;
+            }
             
+
             if(password.trim()!==confirm_password.trim()){
                 db.close();
                 res.status(500).json({success:false, error:"The passwords don't match."});
